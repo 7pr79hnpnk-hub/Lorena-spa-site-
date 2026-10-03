@@ -1,0 +1,31 @@
+{
+  "name": "lorensa-spa",
+  "private": true,
+  "version": "1.0.0",
+  "description": "LORENSA — בוטיק ספא ראש והילינג. אתר תדמית עם לוגו תלת־ממדי ב־WebGL.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "build:docs": "vite build --outDir docs --emptyOutDir",
+    "preview": "vite preview",
+    "images": "node scripts/fetch-images.mjs",
+    "wordmark": "node scripts/build-wordmark.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/assistant": "^5.3.0",
+    "@fontsource-variable/frank-ruhl-libre": "^5.3.0",
+    "@fontsource/cormorant-garamond": "^5.3.0",
+    "gsap": "^3.15.0",
+    "lenis": "^1.3.26",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "opentype.js": "^2.0.0",
+    "sharp": "^0.35.5",
+    "vite": "^8.3.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

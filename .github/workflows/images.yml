@@ -1,0 +1,44 @@
+name: Optimize images
+
+on:
+  push:
+    paths:
+      - scripts/image-sources.json
+      - scripts/fetch-images.mjs
+      - .github/workflows/images.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: images-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  images:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Download and encode AVIF / WebP renditions
+        run: npm run images -- --strict
+
+      - name: Commit renditions
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/images
+          if git diff --cached --quiet; then
+            echo "Images already up to date."
+            exit 0
+          fi
+          git commit -m "chore(images): add optimized AVIF/WebP renditions"
+          git push

@@ -1,0 +1,80 @@
+/* ──────────────────────────────────────────────────────────────
+   LORENSA — Design tokens
+   Obsidian espresso canvas · one accent: Lorensa Gold.
+   See DESIGN.md for roles and rules.
+   ────────────────────────────────────────────────────────────── */
+
+:root {
+  /* Canvas (never pure black) */
+  --bg: #0b0907;
+  --bg-2: #100d0a;
+  --bg-3: #16120e;
+  --surface: #1b1612;
+
+  /* Text */
+  --text: #f4ede1;
+  --text-2: #c9bda9;
+  --text-3: #8f8473;
+
+  /* Lorensa Gold — the single accent */
+  --gold: #e6bd6a;
+  --gold-hi: #f7dda2;
+  --gold-lo: #b88c45;
+  --champagne: #d9c39b;
+  --gold-text: linear-gradient(180deg, #f5cb63 0%, #ecc570 40%, #dcc497 100%);
+  --gold-fill: linear-gradient(180deg, #f6d796 0%, #e4b764 52%, #cf9f4f 100%);
+
+  /* Hairlines */
+  --line: rgba(232, 200, 140, 0.13);
+  --line-strong: rgba(232, 200, 140, 0.26);
+
+  /* Academy paper (brand light variant) */
+  --ivory: #eeeae2;
+  --ivory-2: #e4ddd0;
+  --ink: #241f19;
+  --ink-2: #5d554a;
+  --ink-line: rgba(36, 31, 25, 0.13);
+  --pewter: #a2937a;
+
+  /* Type */
+  --font-display: 'Frank Ruhl Libre Variable', 'Frank Ruhl Libre', 'David Libre', serif;
+  --font-body: 'Assistant Variable', 'Assistant', system-ui, sans-serif;
+  --font-latin: 'Cormorant Garamond', 'Cormorant', 'Frank Ruhl Libre Variable', serif;
+
+  --fs-display: clamp(2.7rem, 1.35rem + 4.4vw, 5.8rem);
+  --fs-statement: clamp(1.9rem, 1.1rem + 2.4vw, 3.3rem);
+  --fs-manifesto: clamp(1.75rem, 1rem + 2.35vw, 3.25rem);
+  --fs-title: clamp(1.45rem, 1.1rem + 1.15vw, 2.25rem);
+  --fs-lead: clamp(1.08rem, 1rem + 0.32vw, 1.3rem);
+  --fs-body: 1.0625rem;
+  --fs-small: 0.9rem;
+  --fs-eyebrow: 0.8rem;
+
+  /* Space */
+  --gutter: clamp(20px, 4.4vw, 72px);
+  --max: 1400px;
+  --section: clamp(104px, 13vw, 208px);
+  --nav-h: 64px;
+
+  /* Shape */
+  --r-xl: 34px;
+  --r-lg: 26px;
+  --r-md: 18px;
+  --r-pill: 999px;
+  --bezel-pad: 7px;
+
+  /* Motion — weighty, never linear */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-silk: cubic-bezier(0.65, 0.05, 0.36, 1);
+  --dur-1: 0.45s;
+  --dur-2: 0.8s;
+  --dur-3: 1.2s;
+
+  /* Layers */
+  --z-content: 1;
+  --z-leds: 20;
+  --z-grain: 30;
+  --z-nav: 40;
+  --z-menu: 50;
+}
