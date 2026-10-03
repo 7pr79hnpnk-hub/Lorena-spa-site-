@@ -34,6 +34,12 @@ npm run preview   # תצוגה של הבנייה
 התיקייה `dist/` היא אתר סטטי מלא ומתאימה לכל אחסון (Vercel, Netlify, GitHub Pages, cPanel).
 ההגדרה `base: './'` מאפשרת להעלות אותה גם לתת־תיקייה.
 
+### פרסום אוטומטי ב־GitHub Pages
+
+הגדרה חד־פעמית: **Settings → Pages → Source: GitHub Actions**. מאותו רגע, כל עדכון ל־`main`
+מתפרסם אוטומטית (workflow בשם **Deploy site**) לכתובת:
+`https://7pr79hnpnk-hub.github.io/Lorena-spa-site-/`
+
 ## Project map (English)
 
 ```
