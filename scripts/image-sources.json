@@ -1,0 +1,40 @@
+{
+  "outDir": "public/images",
+  "formats": {
+    "avif": { "quality": 52, "effort": 6 },
+    "webp": { "quality": 74, "effort": 5 }
+  },
+  "images": [
+    {
+      "name": "hero",
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wXK7qwxyUR5Z59OF2Mf7hapWFP/hf_20261003_080327_ad71314e-9c04-44b5-b385-9db1b2c2ec54.png",
+      "widths": [720, 1280, 1920, 2560]
+    },
+    {
+      "name": "water",
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wXK7qwxyUR5Z59OF2Mf7hapWFP/hf_20261003_080327_923323bd-5587-4c76-b137-4223f5b6a16c.png",
+      "widths": [600, 1000, 1600]
+    },
+    {
+      "name": "room",
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wXK7qwxyUR5Z59OF2Mf7hapWFP/hf_20261003_080327_b0a344b0-ee6d-4778-9665-98799755fc97.png",
+      "widths": [720, 1280, 1920, 2560]
+    },
+    {
+      "name": "ritual",
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wXK7qwxyUR5Z59OF2Mf7hapWFP/hf_20261003_080328_6fe62200-b12a-46d3-bdb2-5db31b77cc0a.png",
+      "widths": [600, 1000, 1600]
+    },
+    {
+      "name": "academy",
+      "url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wXK7qwxyUR5Z59OF2Mf7hapWFP/hf_20261003_080327_4bde65c6-c146-4947-879b-da20992c1d0c.png",
+      "widths": [600, 1000, 1600]
+    },
+    {
+      "name": "treatment",
+      "file": "assets-src/brand/banner.jpg",
+      "crop": { "left": 834, "top": 110, "width": 552, "height": 326 },
+      "widths": [552]
+    }
+  ]
+}
