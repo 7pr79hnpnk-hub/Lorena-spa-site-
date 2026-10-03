@@ -24,16 +24,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Check that GitHub Pages is enabled
+      - name: Check that GitHub Pages publishes from GitHub Actions
         id: pages
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if gh api "repos/${GITHUB_REPOSITORY}/pages" --silent 2>/dev/null; then
+          build_type="$(gh api "repos/${GITHUB_REPOSITORY}/pages" --jq .build_type 2>/dev/null || true)"
+          if [ "$build_type" = "workflow" ]; then
             echo "enabled=true" >> "$GITHUB_OUTPUT"
           else
             echo "enabled=false" >> "$GITHUB_OUTPUT"
-            echo "::notice title=GitHub Pages is not enabled::Enable it in Settings → Pages → Source: GitHub Actions, then re-run this workflow."
+            echo "::notice title=Skipping deploy::Pages source is '${build_type:-disabled}'. Choose Settings → Pages → Source: GitHub Actions to deploy from this workflow (the branch source serves the prebuilt /docs copy)."
           fi
 
       - uses: actions/setup-node@v4

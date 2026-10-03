@@ -34,11 +34,15 @@ npm run preview   # תצוגה של הבנייה
 התיקייה `dist/` היא אתר סטטי מלא ומתאימה לכל אחסון (Vercel, Netlify, GitHub Pages, cPanel).
 ההגדרה `base: './'` מאפשרת להעלות אותה גם לתת־תיקייה.
 
-### פרסום אוטומטי ב־GitHub Pages
+### תצוגה חיה ב־GitHub Pages
 
-הגדרה חד־פעמית: **Settings → Pages → Source: GitHub Actions**. מאותו רגע, כל עדכון ל־`main`
-מתפרסם אוטומטית (workflow בשם **Deploy site**) לכתובת:
-`https://7pr79hnpnk-hub.github.io/Lorena-spa-site-/`
+כתובת: `https://7pr79hnpnk-hub.github.io/Lorena-spa-site-/`
+
+- **Deploy from a branch** (המצב הנוכחי): GitHub מגיש את קבצי המקור כמו שהם, ולכן עותק בנוי
+  של האתר נשמר בתיקייה `docs/`, ו־`index.html` מעביר אליו אוטומטית. אחרי כל שינוי מריצים
+  `npm run build:docs` ושומרים (commit) גם את `docs/`.
+- **GitHub Actions** (מומלץ לטווח ארוך): Settings → Pages → Source: GitHub Actions. אז כל עדכון
+  ל־`main` נבנה ומתפרסם אוטומטית (workflow בשם **Deploy site**), בלי צורך ב־`docs/`.
 
 ## Project map (English)
 
