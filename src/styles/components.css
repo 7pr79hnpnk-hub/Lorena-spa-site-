@@ -1,0 +1,381 @@
+/* ──────────────────────────────────────────────────────────────
+   Components · buttons, floating island nav, menu, tags
+   ────────────────────────────────────────────────────────────── */
+
+/* ── Buttons: pill with nested icon island ─────────────────── */
+
+.btn {
+  --btn-h: 58px;
+  --btn-pad: 7px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  min-block-size: var(--btn-h);
+  padding-block: var(--btn-pad);
+  padding-inline: 26px var(--btn-pad);
+  border-radius: var(--r-pill);
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  isolation: isolate;
+  transition:
+    transform var(--dur-2) var(--ease-spring),
+    background-color var(--dur-1) var(--ease-out),
+    color var(--dur-1) var(--ease-out),
+    box-shadow var(--dur-2) var(--ease-out);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn:not(:has(.btn__icon)) {
+  padding-inline: 26px;
+}
+
+.btn__icon {
+  display: grid;
+  place-items: center;
+  inline-size: calc(var(--btn-h) - var(--btn-pad) * 2);
+  block-size: calc(var(--btn-h) - var(--btn-pad) * 2);
+  border-radius: 50%;
+  flex: none;
+  transition:
+    transform var(--dur-2) var(--ease-spring),
+    background-color var(--dur-1) var(--ease-out);
+}
+
+.btn__icon svg {
+  inline-size: 20px;
+  block-size: 20px;
+}
+
+.btn:hover .btn__icon {
+  transform: translate3d(-3px, -1px, 0) scale(1.06);
+}
+
+.btn--gold {
+  color: #1d1408;
+  background: var(--gold-fill);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 246, 222, 0.65),
+    inset 0 -1px 0 rgba(120, 80, 20, 0.35),
+    0 14px 34px -14px rgba(230, 189, 106, 0.55);
+}
+
+.btn--gold .btn__icon {
+  background: rgba(29, 20, 8, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(29, 20, 8, 0.08);
+}
+
+.btn--gold:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 246, 222, 0.75),
+    inset 0 -1px 0 rgba(120, 80, 20, 0.35),
+    0 20px 46px -16px rgba(230, 189, 106, 0.75);
+}
+
+.btn--ghost {
+  color: var(--text);
+  background: rgba(255, 244, 222, 0.03);
+  box-shadow: inset 0 0 0 1px var(--line-strong);
+}
+
+.btn--ghost .btn__icon {
+  background: rgba(255, 244, 222, 0.07);
+  color: var(--gold);
+}
+
+.btn--ghost:hover {
+  background: rgba(255, 244, 222, 0.07);
+}
+
+.btn--ink {
+  color: var(--ivory);
+  background: var(--ink);
+  box-shadow: 0 16px 36px -18px rgba(36, 31, 25, 0.6);
+}
+
+.btn--ink .btn__icon {
+  background: rgba(238, 234, 226, 0.1);
+  color: var(--gold-hi);
+}
+
+.btn--sm {
+  --btn-h: 44px;
+  --btn-pad: 5px;
+  gap: 10px;
+  font-size: 0.92rem;
+  padding-inline: 20px;
+}
+
+.btn--lg {
+  --btn-h: 66px;
+  --btn-pad: 8px;
+  font-size: 1.08rem;
+  padding-inline-start: 30px;
+}
+
+/* ── Floating island navigation ────────────────────────────── */
+
+.nav {
+  position: fixed;
+  inset-block-start: 16px;
+  inset-inline: 0;
+  z-index: var(--z-nav);
+  display: flex;
+  justify-content: center;
+  padding-inline: 14px;
+  pointer-events: none;
+}
+
+.nav__island {
+  position: relative;
+  z-index: 2;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  inline-size: 100%;
+  max-inline-size: 560px;
+  min-block-size: var(--nav-h);
+  padding: 8px 8px 8px 8px;
+  padding-inline-start: 22px;
+  border-radius: var(--r-pill);
+  background: rgba(16, 13, 10, 0.5);
+  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  backdrop-filter: blur(18px) saturate(150%);
+  box-shadow:
+    inset 0 0 0 1px rgba(232, 200, 140, 0.14),
+    inset 0 1px 0 rgba(255, 240, 210, 0.06),
+    0 18px 50px -24px rgba(0, 0, 0, 0.7);
+  transition:
+    background-color var(--dur-2) var(--ease-out),
+    transform var(--dur-2) var(--ease-spring);
+}
+
+.nav.is-scrolled .nav__island {
+  background: rgba(16, 13, 10, 0.72);
+}
+
+.nav.is-light .nav__island {
+  background: rgba(238, 234, 226, 0.7);
+  box-shadow:
+    inset 0 0 0 1px rgba(36, 31, 25, 0.1),
+    0 18px 50px -26px rgba(36, 31, 25, 0.35);
+}
+
+.nav.is-light .nav__links a {
+  color: var(--ink-2);
+}
+
+.nav.is-light .nav__links a:hover,
+.nav.is-light .nav__links a.is-current {
+  color: var(--ink);
+}
+
+.nav.is-light .nav__brand {
+  background: linear-gradient(180deg, #c99a45 0%, #a77d3c 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.nav.is-light .nav__toggle-line {
+  background: var(--ink);
+}
+
+.nav__brand {
+  font-family: var(--font-latin);
+  font-weight: 600;
+  font-size: 1.12rem;
+  letter-spacing: 0.32em;
+  margin-inline-end: auto;
+  padding-inline-end: 18px;
+  background: var(--gold-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nav__links {
+  display: none;
+  align-items: center;
+}
+
+.nav__links a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 44px;
+  padding-inline: 14px;
+  font-size: 0.95rem;
+  color: var(--text-2);
+  transition: color var(--dur-1) var(--ease-out);
+}
+
+.nav__links a::after {
+  content: '';
+  position: absolute;
+  inset-inline: 14px;
+  inset-block-end: 9px;
+  block-size: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform var(--dur-2) var(--ease-out);
+}
+
+.nav__links a:hover,
+.nav__links a.is-current {
+  color: var(--text);
+}
+
+.nav__links a.is-current::after {
+  transform: scaleX(1);
+}
+
+.nav__cta {
+  display: none;
+  margin-inline-start: 8px;
+}
+
+.nav__toggle {
+  position: relative;
+  inline-size: 48px;
+  block-size: 48px;
+  border-radius: 50%;
+  background: rgba(255, 244, 222, 0.06);
+  flex: none;
+}
+
+.nav__toggle-line {
+  position: absolute;
+  inset-inline-start: 15px;
+  inline-size: 18px;
+  block-size: 1.5px;
+  border-radius: 2px;
+  background: var(--text);
+  transition:
+    transform var(--dur-2) var(--ease-spring),
+    inset-block-start var(--dur-2) var(--ease-spring);
+}
+
+.nav__toggle-line:nth-child(1) {
+  inset-block-start: 20px;
+}
+
+.nav__toggle-line:nth-child(2) {
+  inset-block-start: 27px;
+}
+
+.nav__toggle[aria-expanded='true'] .nav__toggle-line:nth-child(1) {
+  inset-block-start: 23.5px;
+  transform: rotate(45deg);
+}
+
+.nav__toggle[aria-expanded='true'] .nav__toggle-line:nth-child(2) {
+  inset-block-start: 23.5px;
+  transform: rotate(-45deg);
+}
+
+@media (min-width: 420px) {
+  .nav__cta {
+    display: inline-flex;
+  }
+}
+
+@media (min-width: 1080px) {
+  .nav__island {
+    inline-size: max-content;
+    max-inline-size: none;
+  }
+
+  .nav__links {
+    display: flex;
+  }
+
+  .nav__toggle {
+    display: none;
+  }
+}
+
+/* ── Full-screen menu ──────────────────────────────────────── */
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  align-content: center;
+  gap: 40px;
+  padding: calc(var(--nav-h) + 48px) var(--gutter) 48px;
+  background: rgba(11, 9, 7, 0.84);
+  -webkit-backdrop-filter: blur(28px) saturate(140%);
+  backdrop-filter: blur(28px) saturate(140%);
+  pointer-events: auto;
+  opacity: 0;
+  transition: opacity var(--dur-2) var(--ease-out);
+}
+
+.menu[hidden] {
+  display: none;
+}
+
+.menu.is-open {
+  opacity: 1;
+}
+
+.menu__links {
+  display: grid;
+  gap: 4px;
+}
+
+.menu__links a,
+.menu__cta {
+  opacity: 0;
+  transform: translate3d(0, 44px, 0);
+  transition:
+    opacity var(--dur-2) var(--ease-out),
+    transform var(--dur-3) var(--ease-out);
+  transition-delay: calc(80ms + var(--i) * 55ms);
+}
+
+.menu.is-open .menu__links a,
+.menu.is-open .menu__cta {
+  opacity: 1;
+  transform: none;
+}
+
+.menu__links a {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 9vw, 3.4rem);
+  font-weight: 330;
+  line-height: 1.25;
+  color: var(--text);
+}
+
+.menu__links a:active {
+  color: var(--gold);
+}
+
+.menu__cta {
+  justify-self: start;
+}
+
+/* ── Tag ───────────────────────────────────────────────────── */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-block-size: 26px;
+  padding-inline: 12px;
+  border-radius: var(--r-pill);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  background: rgba(230, 189, 106, 0.08);
+  box-shadow: inset 0 0 0 1px rgba(230, 189, 106, 0.22);
+}
